@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 function getYouTubeEmbedId(url: string): string | null {
   const match = url.match(
-    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/))([\w-]{11})/
+    /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|m\.youtube\.com\/(?:watch\?v=|v\/))([\w-]{11})/
   );
   return match ? match[1] : null;
 }
@@ -63,7 +63,7 @@ export default async function ProjectPage({ params }: Props) {
           </div>
         </header>
 
-        {project.mediaType === "youtube" && youtubeId ? (
+        {youtubeId ? (
           <div className="aspect-video w-full">
             <iframe
               src={`https://www.youtube.com/embed/${youtubeId}`}

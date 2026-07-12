@@ -37,6 +37,11 @@ export function ProjectCard({
             No thumbnail
           </div>
         )}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 group-active:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+          <span className="text-white text-sm tracking-widest font-medium opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex items-center gap-2">
+            VIEW PROJECT <span>→</span>
+          </span>
+        </div>
       </div>
       <div className="pt-4 space-y-1">
         <h3 className="text-white font-semibold text-sm tracking-wide">
