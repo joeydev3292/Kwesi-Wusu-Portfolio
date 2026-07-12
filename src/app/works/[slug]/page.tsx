@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { StillImages } from "@/components/StillImages";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -101,19 +102,7 @@ export default async function ProjectPage({ params }: Props) {
         )}
 
         {project.stillImages && project.stillImages.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {project.stillImages.map((url: string, i: number) => (
-              <div key={i} className="relative aspect-video">
-                <Image
-                  src={url}
-                  alt={`${project.title} still ${i + 1}`}
-                  fill
-                  className="object-cover rounded-sm"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            ))}
-          </div>
+          <StillImages images={project.stillImages as string[]} title={project.title} />
         )}
       </div>
     </article>
