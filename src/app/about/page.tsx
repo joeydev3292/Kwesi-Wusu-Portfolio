@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <section className="animate-page-in min-h-screen flex items-center justify-center px-6 pt-52 pb-16">
+    <section className="animate-page-in min-h-screen flex items-center justify-center px-6 pt-16 pb-16">
       <Nav />
       <div className="max-w-2xl text-center space-y-8">
         <div className="space-y-5 text-white/70 text-sm md:text-base leading-relaxed font-light">
