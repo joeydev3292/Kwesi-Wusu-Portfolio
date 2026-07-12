@@ -4,7 +4,7 @@ import Image from "next/image";
 interface ProjectCardProps {
   title: string;
   slug: string;
-  role: string;
+  role: string[];
   thumbnailUrl?: string | null;
   year?: number | null;
   genre?: string | null;
@@ -42,7 +42,7 @@ export function ProjectCard({
         <h3 className="text-white font-semibold text-sm tracking-wide">
           {title}
         </h3>
-        <p className="text-accent text-xs tracking-wider font-medium">{role}</p>
+        <p className="text-accent text-xs tracking-wider font-medium">{Array.isArray(role) ? role.join(", ") : role}</p>
         {year && (
           <p className="text-white/40 text-xs">
             {year}

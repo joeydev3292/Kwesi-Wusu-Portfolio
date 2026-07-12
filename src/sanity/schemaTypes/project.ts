@@ -19,28 +19,26 @@ export const project = defineType({
         source: "title",
         maxLength: 96,
       },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: "year",
-      title: "Year",
-      type: "number",
-      validation: (rule) => rule.min(1900).max(2100),
     }),
     defineField({
       name: "role",
       title: "Role",
-      type: "string",
-      options: {
-        list: [
-          { title: "Director", value: "Director" },
-          { title: "Cinematographer", value: "Cinematographer" },
-          { title: "Editor", value: "Editor" },
-          { title: "Producer", value: "Producer" },
-          { title: "Writer", value: "Writer" },
-          { title: "Director of Photography", value: "Director of Photography" },
-        ],
-      },
+      type: "array",
+      of: [
+        {
+          type: "string",
+          options: {
+            list: [
+              { title: "Director", value: "Director" },
+              { title: "Cinematographer", value: "Cinematographer" },
+              { title: "Editor", value: "Editor" },
+              { title: "Producer", value: "Producer" },
+              { title: "Writer", value: "Writer" },
+              { title: "Colorist", value: "Colorist" },
+            ],
+          },
+        },
+      ],
     }),
     defineField({
       name: "description",
@@ -119,7 +117,7 @@ export const project = defineType({
     prepare({ title, media, role }) {
       return {
         title,
-        subtitle: role ? `Role: ${role}` : undefined,
+        subtitle: role?.length ? `Roles: ${role.join(", ")}` : undefined,
         media,
       };
     },

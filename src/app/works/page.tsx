@@ -34,8 +34,8 @@ export default async function Works() {
             <ProjectCard
               key={project._id as string}
               title={project.title as string}
-              slug={(project.slug as { current: string }).current}
-              role={project.role as string}
+              slug={(project.slug as { current: string } | null)?.current ?? (project.title as string).toLowerCase().replace(/\s+/g, "-")}
+              role={project.role as string[]}
               thumbnailUrl={(project.thumbnailUrl as string) ?? null}
               year={(project.year as number) ?? null}
               genre={(project.genre as string) ?? null}

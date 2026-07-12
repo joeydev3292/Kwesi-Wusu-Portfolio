@@ -52,7 +52,7 @@ export default async function ProjectPage({ params }: Props) {
           </h1>
           <div className="flex flex-wrap gap-4 text-sm text-white/50">
             {project.role && (
-              <span className="text-accent font-semibold">{project.role}</span>
+              <span className="text-accent font-semibold">{Array.isArray(project.role) ? (project.role as string[]).join(", ") : project.role}</span>
             )}
             {project.year && <span>{project.year}</span>}
             {project.genre && (
