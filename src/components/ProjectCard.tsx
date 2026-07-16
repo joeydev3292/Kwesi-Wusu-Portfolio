@@ -42,6 +42,9 @@ export function ProjectCard({
             VIEW PROJECT <span>→</span>
           </span>
         </div>
+        <span className="absolute inset-0 md:hidden flex items-center justify-center text-white text-[10px] tracking-widest font-medium drop-shadow-lg pointer-events-none">
+          VIEW PROJECT →
+        </span>
       </div>
       <div className="pt-4 space-y-1">
         <h3 className="text-white font-semibold text-sm tracking-wide">
