@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { X, ChevronLeft, ChevronRight, ArrowUp } from "lucide-react";
 
 interface StillImagesProps {
   images: string[];
@@ -11,6 +11,7 @@ interface StillImagesProps {
 
 export function StillImages({ images, title }: StillImagesProps) {
   const [selected, setSelected] = useState<number | null>(null);
+  const touchStart = useRef<number | null>(null);
 
   const close = useCallback(() => setSelected(null), []);
 
@@ -46,17 +47,34 @@ export function StillImages({ images, title }: StillImagesProps) {
               src={url}
               alt={`${title} still ${i + 1}`}
               fill
-              className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+              className="object-cover transition-opacity duration-300 group-hover:opacity-80 active:opacity-80"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </button>
         ))}
       </div>
 
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={() => document.documentElement.scrollIntoView({ behavior: "smooth" })}
+          className="flex items-center gap-2 text-white/40 hover:text-accent transition-colors text-sm tracking-widest font-light"
+        >
+          BACK TO TOP <ArrowUp size={14} />
+        </button>
+      </div>
+
       {selected !== null && (
         <div
           className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center animate-[fadeIn_0.2s_ease-out]"
           onClick={close}
+          onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; }}
+          onTouchEnd={(e) => {
+            if (touchStart.current === null) return;
+            const diff = e.changedTouches[0].clientX - touchStart.current;
+            if (diff > 50) prev();
+            if (diff < -50) next();
+            touchStart.current = null;
+          }}
         >
           <button
             onClick={close}

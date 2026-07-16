@@ -35,6 +35,7 @@ export const project = defineType({
               { title: "Producer", value: "Producer" },
               { title: "Writer", value: "Writer" },
               { title: "Colorist", value: "Colorist" },
+              { title: "Sound Design", value: "Sound Design" },
             ],
           },
         },
