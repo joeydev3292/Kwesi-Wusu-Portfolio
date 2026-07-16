@@ -42,9 +42,7 @@ export function ProjectCard({
             VIEW PROJECT <span>→</span>
           </span>
         </div>
-        <span className="absolute bottom-3 right-3 md:hidden text-white/60 text-xs tracking-wider">
-          VIEW →
-        </span>
+
       </div>
       <div className="pt-4 space-y-1">
         <h3 className="text-white font-semibold text-sm tracking-wide">
