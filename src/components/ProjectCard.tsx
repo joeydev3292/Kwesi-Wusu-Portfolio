@@ -37,8 +37,8 @@ export function ProjectCard({
             No thumbnail
           </div>
         )}
-        <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/40 group-active:bg-black/40 transition-colors duration-300 items-center justify-center">
-          <span className="text-white text-sm tracking-widest font-medium opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex items-center gap-2">
+        <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 items-center justify-center">
+          <span className="text-white text-sm tracking-widest font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
             VIEW PROJECT <span>→</span>
           </span>
         </div>
