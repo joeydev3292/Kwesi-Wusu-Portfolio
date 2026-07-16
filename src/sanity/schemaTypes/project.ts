@@ -102,12 +102,6 @@ export const project = defineType({
       type: "array",
       of: [{ type: "image", options: { hotspot: true } }],
     }),
-    defineField({
-      name: "order",
-      title: "Display Order",
-      type: "number",
-      description: "Lower numbers appear first",
-    }),
   ],
   preview: {
     select: {
