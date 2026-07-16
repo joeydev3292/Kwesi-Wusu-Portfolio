@@ -1,7 +1,7 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
-import { orderableDocumentList } from "@sanity/orderable-document-list";
+import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import { schemaTypes } from "./src/sanity/schemaTypes";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
@@ -17,7 +17,7 @@ export default defineConfig({
         S.list()
           .title("Content")
           .items([
-            orderableDocumentList({
+            orderableDocumentListDeskItem({
               type: "project",
               title: "Projects",
             }),
