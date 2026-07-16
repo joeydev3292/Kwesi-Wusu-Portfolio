@@ -2,7 +2,7 @@ import { client } from "./client";
 
 export async function getProjects() {
   if (!client) return [];
-  return client.fetch(`*[_type == "project"] | order(_order asc) {
+  return client.fetch(`*[_type == "project"] | order(order asc, _createdAt desc) {
     _id,
     title,
     slug,
