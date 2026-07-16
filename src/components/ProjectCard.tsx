@@ -42,6 +42,9 @@ export function ProjectCard({
             VIEW PROJECT <span>→</span>
           </span>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 md:hidden bg-black/50 px-3 py-1.5">
+          <span className="text-white text-[10px] tracking-widest font-medium">VIEW →</span>
+        </div>
       </div>
       <div className="pt-4 space-y-1">
         <h3 className="text-white font-semibold text-sm tracking-wide">
