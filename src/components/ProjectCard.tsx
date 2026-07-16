@@ -37,12 +37,12 @@ export function ProjectCard({
             No thumbnail
           </div>
         )}
-        <div className="hidden md:flex absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 items-center justify-center">
+        <div className="hidden md:flex invisible group-hover:visible absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 items-center justify-center">
           <span className="text-white text-sm tracking-widest font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2">
             VIEW PROJECT <span>→</span>
           </span>
         </div>
-        <span className="flex absolute inset-0 md:hidden items-center justify-center text-white text-[10px] tracking-widest font-medium drop-shadow-lg pointer-events-none">
+        <span className="flex absolute inset-0 md:hidden items-center justify-center text-white text-[8px] tracking-normal font-medium drop-shadow-lg pointer-events-none">
           VIEW PROJECT →
         </span>
       </div>
