@@ -14,7 +14,7 @@ export async function getProjects() {
     "thumbnailUrl": thumbnail.asset->url,
     youtubeUrl,
     "posterUrl": stillImages[0].asset->url
-  }`);
+  }`, {}, { useCdn: false });
 }
 
 export async function getProjectBySlug(slug: string) {
