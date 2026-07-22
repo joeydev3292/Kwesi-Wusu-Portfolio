@@ -33,44 +33,45 @@ export function ProjectSlideshow({ videoIds }: ProjectSlideshowProps) {
     return () => clearInterval(interval);
   }, [advance, hasVideos, videoIds.length]);
 
-  if (!hasVideos) {
-    return (
+  const buildUrl = (id: string) =>
+    `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&disablekb=1&rel=0&iv_load_policy=3&enablejsapi=1&playsinline=1`;
+
+  return (
+    <>
       <Image
         src="/poster.svg"
-        alt="Background"
+        alt=""
         fill
         className="object-cover"
         priority
       />
-    );
-  }
 
-  const buildUrl = (id: string) =>
-    `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1&playsinline=1&iv_load_policy=3`;
+      {videoIds.map((id, index) => {
+        const isVisible = index === current;
+        const isNext = index === next;
 
-  return (
-    <>
-      <iframe
-        key={`current-${videoIds[current]}`}
-        src={buildUrl(videoIds[current])}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${
-          isFading ? "opacity-0" : "opacity-100"
-        }`}
-        allow="autoplay; encrypted-media"
-        allowFullScreen={false}
-        title="Project video"
-      />
+        let className = "absolute inset-0 pointer-events-none";
+        if (isVisible && !isFading) {
+          className += " opacity-100";
+        } else if (isVisible && isFading) {
+          className += " opacity-0 transition-opacity duration-[2000ms]";
+        } else if (isNext) {
+          className += " opacity-100 animate-[fadeIn_2s_ease-in-out_forwards]";
+        } else {
+          className += " opacity-0";
+        }
 
-      {next !== null && (
-        <iframe
-          key={`next-${videoIds[next]}`}
-          src={buildUrl(videoIds[next])}
-          className="absolute inset-0 w-full h-full object-cover opacity-0 animate-[fadeIn_2s_ease-in-out_forwards]"
-          allow="autoplay; encrypted-media"
-          allowFullScreen={false}
-          title="Project video"
-        />
-      )}
+        return (
+          <iframe
+            key={id}
+            src={buildUrl(id)}
+            className={className}
+            allow="autoplay; encrypted-media"
+            allowFullScreen={false}
+            title="Project video"
+          />
+        );
+      })}
     </>
   );
 }
