@@ -17,6 +17,23 @@ export async function getProjects() {
   }`);
 }
 
+export async function getProjectVideos(): Promise<string[]> {
+  if (!client) return [];
+  const projects = await client.fetch<{ youtubeUrl: string }[]>(
+    `*[_type == "project" && defined(youtubeUrl)] | order(order asc, _createdAt desc) {
+      youtubeUrl
+    }`
+  );
+  return projects
+    .map((p) => {
+      const match = p.youtubeUrl?.match(
+        /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/
+      );
+      return match?.[1] ?? null;
+    })
+    .filter(Boolean) as string[];
+}
+
 export async function getProjectBySlug(slug: string) {
   if (!client) return null;
   return client.fetch(`*[_type == "project" && slug.current == $slug][0] {

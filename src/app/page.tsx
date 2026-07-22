@@ -1,19 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ProjectSlideshow } from "@/components/ProjectSlideshow";
+import { getProjectVideos } from "@/sanity/lib/queries";
 
-export default function Home() {
+export default async function Home() {
+  const videoIds = await getProjectVideos();
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/poster.svg"
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/showreel.mp4" type="video/mp4" />
-      </video>
+      <ProjectSlideshow videoIds={videoIds} />
       <div className="absolute inset-0 bg-[rgba(17,19,24,0.55)]" />
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-6">
