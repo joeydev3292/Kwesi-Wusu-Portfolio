@@ -1,14 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    videoRef.current?.play();
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         poster="/poster.svg"
         className="absolute inset-0 w-full h-full object-cover"
       >
@@ -25,8 +36,8 @@ export default function Home() {
           <Image
             src="/kwesiwusulogo.svg"
             alt="Kwesi Wusu"
-            width={70}
-            height={19}
+            width={50}
+            height={14}
             className="w-auto h-auto"
             priority
           />

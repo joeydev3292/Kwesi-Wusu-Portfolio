@@ -32,11 +32,10 @@ export default function About() {
             With experience spanning direction, cinematography, and editing,
             Kwesi approaches each frame with intention — grounded in the belief
             that the best stories are the ones told honestly. Whether behind the
-            camera or in the edit bay, the goal is always the same: make
-            something that stays with the viewer.
+            camera or in the edit bay, the goal is always the same: MAKE SOMETHING THAT STAYS WITH THE VIEWER.
           </p>
           <p>
-            Based in Accra, available for projects worldwide. Let&apos;s tell
+            Available for projects worldwide. Let&apos;s tell
             your story.
           </p>
         </div>
